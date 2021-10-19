@@ -1,0 +1,22 @@
+{% extends 'phonebook/base.html' %}
+   {% block title %}Log in the Phone Book {% endblock %}
+   {% block heading %}Phone Book{% endblock %}
+   {% block content %}
+      <div style="text-align: center;">
+          <div class="container">
+              <div class="jumbotron">
+                 <form class="form-signin" method="POST">
+                     {% csrf_token %}
+                     <h2 class="form-signin-heading">Log In</h2>
+                     {{ form.as_p }}
+                    <button class="btn btn-lg btn-primary my-4" type="submit">Log In</button>
+                    <a href="{% url 'sign' %}" class="btn btn-primary btn-lg" role="button" aria-pressed="true">Sign the Phone Book</a>
+                    <br>
+                    <a style="margin-top: 2%;" href="{% url 'password_reset' %}" class="btn btn-primary btn-lg btn-block" role="button" aria-pressed="true">Forgot Password</a>
+                </form>
+             </div>  
+          </div>
+       </div>  
+     {% endblock %}   
+
+   

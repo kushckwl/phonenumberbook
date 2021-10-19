@@ -1,0 +1,27 @@
+{% extends 'phonebook/base.html' %}
+{% block content%}
+  <div class="jumbotron">
+     <h1>Phone Book</h1>
+     <p>Welcome {{user.username}}</p>
+     <p style="text-align: end;"><strong>Total Users registered: {{count}}</strong></p>
+     {% if user.is_authenticated %}
+         <a class="btn btn-primary" href="{% url 'logout' %}" role="button">Logout</a>
+         <a class="btn btn-primary" href="{% url 'create' %}" role="button">Add New Contact</a>
+     {% else %}    
+         <a class="btn btn-primary" href="{% url 'sign' %}" role="button">Sign Up</a>
+         <a class="btn btn-primary" href="{% url 'login' %}" role="button">Login</a>
+         
+     {% endif %}    
+  </div>     
+{% for contacts in contact %}
+     <div class="page-header">
+         <h1><a href="{% url 'detail' contacts.id %}">{{ contacts.name }}</a></h1>
+     </div>
+      <div class="well">
+          <p>{{ contacts.number }}</p>
+      </div>
+      <a class="btn btn-primary" href="{% url 'update' contacts.id %}" role="button">Update</a>
+      <a class="btn btn-primary" href="{% url 'delete' contacts.id %}" role="button">Delete</a>
+     
+ {% endfor %}
+{% endblock %}      

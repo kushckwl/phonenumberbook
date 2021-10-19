@@ -1,0 +1,18 @@
+{% extends 'phonebook/base.html' %}
+<title>Create the Phone Book</title>
+{% block content %}
+    <div class="container">
+      <div class="jumbotron">
+         <form class="form-signin" method="POST">
+             {% csrf_token %}
+             <h2 class="form-signin-heading">Add New Contact</h2>
+             <div class="form-group">
+                {{ form.as_p }}
+             </div>
+             <button class="btn btn-lg btn-primary btn-block" type="submit">Create</button>
+           </form>
+       </div>
+    </div> <!-- /container -->
+      
+{% endblock %}  
+
